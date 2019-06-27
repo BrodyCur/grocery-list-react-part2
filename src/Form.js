@@ -14,6 +14,7 @@ const Form = ({onSubmit}) => {
       };
       onSubmit(newItem)
     };
+    itemRef.current.value = "";
   };
 
   return (
