@@ -53,13 +53,17 @@ const App = () => {
   const filterItems = (selectedFilter) => {
     const updatedItems = items.filter( item => {
       if (selectedFilter === 'all') {
-        return true;
-      } else if (selectedFilter === item.type) {
-        console.log(item)
-        return item
+        return (<List
+          items={items}
+          incrementItem={incrementItemQuantity}
+          decrementItem={decrementItemQuantity}
+        />);
+      } else if (item.type === selectedFilter) {
+        console.log(item);
+        return (item);
       };
     });
-    return setItems(updatedItems);
+    return (updatedItems);
   };
 
   return (
