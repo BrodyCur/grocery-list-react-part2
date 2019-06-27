@@ -44,12 +44,18 @@ const App = () => {
     setItems(updatedItems);
   };
 
+  const addItem = (newItem) => {
+    setItems( (oldItems) => 
+      [...oldItems, newItem]
+    );
+  };
+
   return (
     <main className="layout" id="app">
       <header className="header">
         <h1>Grocery List</h1>
       </header>
-      <Form />
+      <Form onSubmit={addItem}/>
       <Filters filters={filters}/>
       <List
         items={items}
