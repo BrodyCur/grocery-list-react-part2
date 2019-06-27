@@ -12,20 +12,22 @@ const App = () => {
     { name: 'Bakery', value: 'bakery' },
   ];
 
+  // const [filters, setFilters] = useState(initialFilters)
+
   const initialItems = [
     { name: 'Steak', type: 'meat', quantity: 3 },
     { name: 'Apples', type: 'prod', quantity: 4 },
     { name: 'Milk (1L, 2%)', type: 'dairy', quantity: 1 },
     { name: 'Baguettes', type: 'bakery', quantity: 2 },
   ];
+
   const [items, setItems] = useState(initialItems);
 
   const incrementItemQuantity = (index) => {
     const updatedItems = items.map((item, i) => {
       if (i === index) {
         item.quantity++;
-      }
-
+      };
       return item;
     });
 
@@ -50,13 +52,28 @@ const App = () => {
     );
   };
 
+  const filterItems = (selectedFilter) => {
+    items.map( item => {
+      if (selectedFilter === 'all') {
+        return true;
+      } else if (selectedFilter === item.type) {
+        console.log(item)
+        return item
+      };
+      return items
+    });
+  };
+
   return (
     <main className="layout" id="app">
       <header className="header">
         <h1>Grocery List</h1>
       </header>
       <Form onSubmit={addItem}/>
-      <Filters filters={filters}/>
+      <Filters 
+        filters={filters}
+        filterItems={filterItems}
+      />
       <List
         items={items}
         incrementItem={incrementItemQuantity}
