@@ -12,8 +12,6 @@ const App = () => {
     { name: 'Bakery', value: 'bakery' },
   ];
 
-  // const [filters, setFilters] = useState(initialFilters)
-
   const initialItems = [
     { name: 'Steak', type: 'meat', quantity: 3 },
     { name: 'Apples', type: 'prod', quantity: 4 },
@@ -53,15 +51,15 @@ const App = () => {
   };
 
   const filterItems = (selectedFilter) => {
-    items.map( item => {
+    const updatedItems = items.filter( item => {
       if (selectedFilter === 'all') {
         return true;
       } else if (selectedFilter === item.type) {
         console.log(item)
         return item
       };
-      return items
     });
+    return setItems(updatedItems);
   };
 
   return (
